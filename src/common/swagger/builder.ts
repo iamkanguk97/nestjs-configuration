@@ -17,10 +17,7 @@ export class SwaggerBuilder {
    *
    * @author 이강욱
    */
-  private static readonly BEARER_TOKEN_CONFIG_LIST = [
-    { name: 'accessToken', description: 'API Access Token' },
-    { name: 'loginToken', description: 'Login Token' },
-  ];
+  private static readonly BEARER_TOKEN_CONFIG_LIST = [{ name: 'accessToken', description: 'API Access Token' }];
 
   /**
    * Tags Configuration List
@@ -28,10 +25,7 @@ export class SwaggerBuilder {
    *
    * @author 이강욱
    */
-  private static readonly TAG_LIST = [
-    { name: 'Auth', description: 'Authentication/Authorization API' },
-    { name: 'User', description: 'User API' },
-  ];
+  private static readonly TAG_LIST = [{ name: 'Health', description: 'Health Check API' }];
 
   static setup(app: INestApplication): void {
     if (this.isSetupComplete) {

@@ -6,7 +6,7 @@ export class SwaggerDocumentConfigHelper {
 
   setDefaultInfo(): this {
     this.documentBuilder
-      .setTitle('Authentication/Authorization API With NestJS')
+      .setTitle('NestJS Swagger API Docs')
       .setDescription(['### Description'].reduce((p, c) => (p += c + '  \n\n'), ''))
       .setVersion('0.0.1');
 
