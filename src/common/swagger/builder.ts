@@ -1,9 +1,9 @@
-import type { INestApplication} from '@nestjs/common';
+import { SwaggerDocumentConfigHelper } from '@common/swagger/document-config.helper';
+import type { INestApplication } from '@nestjs/common';
 import { Logger } from '@nestjs/common';
-import type { OpenAPIObject} from '@nestjs/swagger';
+import type { OpenAPIObject } from '@nestjs/swagger';
 import { SwaggerModule } from '@nestjs/swagger';
 import type { SwaggerUiOptions } from '@nestjs/swagger/dist/interfaces/swagger-ui-options.interface';
-import { SwaggerDocumentConfigHelper } from '@swagger/document-config.helper';
 
 export class SwaggerBuilder {
   private static readonly logger = new Logger(SwaggerBuilder.name);
@@ -39,26 +39,17 @@ export class SwaggerBuilder {
       return;
     }
 
-    this.logger.log(
-      '\x1b[32m=======================================================\x1b[0m',
-    );
+    this.logger.log('\x1b[32m=======================================================\x1b[0m');
     this.logger.log('🏃 SWAGGER API DOCS GENERATING....');
 
-    SwaggerModule.setup(
-      this.API_DOCS_PATH,
-      app,
-      this.createSwaggerDocument(app),
-      {
-        swaggerOptions: this.generateSwaggerOptions(),
-      },
-    );
+    SwaggerModule.setup(this.API_DOCS_PATH, app, this.createSwaggerDocument(app), {
+      swaggerOptions: this.generateSwaggerOptions(),
+    });
 
     this.isSetupComplete = true;
 
     this.logger.log('🏁 SWAGGER API DOCS GENERATED! 🏁');
-    this.logger.log(
-      '\x1b[32m=======================================================\x1b[0m',
-    );
+    this.logger.log('\x1b[32m=======================================================\x1b[0m');
   }
 
   private static createSwaggerDocument(app: INestApplication): OpenAPIObject {

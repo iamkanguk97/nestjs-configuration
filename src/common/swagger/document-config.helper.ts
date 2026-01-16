@@ -7,17 +7,13 @@ export class SwaggerDocumentConfigHelper {
   setDefaultInfo(): this {
     this.documentBuilder
       .setTitle('Authentication/Authorization API With NestJS')
-      .setDescription(
-        ['### Description'].reduce((p, c) => (p += c + '  \n\n'), ''),
-      )
+      .setDescription(['### Description'].reduce((p, c) => (p += c + '  \n\n'), ''))
       .setVersion('0.0.1');
 
     return this;
   }
 
-  addBearerAuthTokens(
-    tokens: Array<{ name: string; description: string }>,
-  ): this {
+  addBearerAuthTokens(tokens: Array<{ name: string; description: string }>): this {
     tokens.forEach(({ name, description }) => {
       this.documentBuilder.addBearerAuth(
         {
@@ -27,7 +23,7 @@ export class SwaggerDocumentConfigHelper {
           name,
           description,
         },
-        name,
+        name
       );
     });
 
