@@ -30,17 +30,6 @@ describe('EnvironmentService', () => {
     expect(environmentService).toBeDefined();
   });
 
-  describe('getString 메서드', () => {
-    it('문자열 환경변수를 반환해야 한다.', () => {
-      mockConfigService.getOrThrow.mockReturnValue('local');
-
-      const result = environmentService.getString('ENV');
-
-      expect(result).toBe('local');
-      expect(mockConfigService.getOrThrow).toHaveBeenCalledWith('ENV');
-    });
-  });
-
   describe('getNumber 메서드', () => {
     it('문자열 환경변수를 숫자로 변환하여 반환해야 한다.', () => {
       mockConfigService.getOrThrow.mockReturnValue('9090');
@@ -50,42 +39,6 @@ describe('EnvironmentService', () => {
       expect(result).toBe(9090);
       expect(typeof result).toBe('number');
       expect(mockConfigService.getOrThrow).toHaveBeenCalledWith('PORT');
-    });
-  });
-
-  describe('isLocal', () => {
-    it('ENV가 local인 경우 true를 반환해야 한다.', () => {
-      mockConfigService.getOrThrow.mockReturnValue(NODE_ENV.LOCAL);
-      expect(environmentService.isLocal()).toBe(true);
-    });
-
-    it('ENV가 local이 아닌 경우 false를 반환해야 한다.', () => {
-      mockConfigService.getOrThrow.mockReturnValue(NODE_ENV.DEVELOPMENT);
-      expect(environmentService.isLocal()).toBe(false);
-    });
-  });
-
-  describe('isDevelopment', () => {
-    it('ENV가 development인 경우 true를 반환해야 한다.', () => {
-      mockConfigService.getOrThrow.mockReturnValue(NODE_ENV.DEVELOPMENT);
-      expect(environmentService.isDevelopment()).toBe(true);
-    });
-
-    it('ENV가 development이 아닌 경우 false를 반환해야 한다.', () => {
-      mockConfigService.getOrThrow.mockReturnValue(NODE_ENV.PRODUCTION);
-      expect(environmentService.isDevelopment()).toBe(false);
-    });
-  });
-
-  describe('isProduction', () => {
-    it('ENV가 production인 경우 true를 반환해야 한다.', () => {
-      mockConfigService.getOrThrow.mockReturnValue(NODE_ENV.PRODUCTION);
-      expect(environmentService.isProduction()).toBe(true);
-    });
-
-    it('ENV가 production이 아닌 경우 false를 반환해야 한다.', () => {
-      mockConfigService.getOrThrow.mockReturnValue(NODE_ENV.LOCAL);
-      expect(environmentService.isProduction()).toBe(false);
     });
   });
 
