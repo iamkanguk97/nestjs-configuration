@@ -108,7 +108,8 @@
       "^@bootstrap/(.*)$": "<rootDir>/bootstrap/$1",
       "^@database/(.*)$": "<rootDir>/database/$1",
       "^@environment/(.*)$": "<rootDir>/environment/$1",
-      "^@logger/(.*)$": "<rootDir>/logger/$1"
+      "^@logger/(.*)$": "<rootDir>/logger/$1",
+      "^@common/(.*)$": "<rootDir>/common/$1"
     }
   }
 }
