@@ -12,10 +12,7 @@ export const EnvironmentSchema = z.object({
   ENV: z.enum([NODE_ENV.LOCAL, NODE_ENV.DEVELOPMENT, NODE_ENV.PRODUCTION, NODE_ENV.TEST]),
   PORT: z.coerce.number().positive().optional(),
 
-  DB_USERNAME: z.string(),
-  DB_PASSWORD: z.string(),
-  DB_DATABASE: z.string(),
-  DB_SYNCHRONIZE: z.coerce.boolean().optional(),
+  DATABASE_URL: z.string(),
 });
 export type IEnvironment = z.infer<typeof EnvironmentSchema>;
 

@@ -53,27 +53,6 @@ describe('EnvironmentService', () => {
     });
   });
 
-  describe('getBoolean 메서드', () => {
-    it('true 값을 반환해야 한다.', () => {
-      mockConfigService.getOrThrow.mockReturnValue(true);
-
-      const result = environmentService.getBoolean('DB_SYNCHRONIZE');
-
-      expect(result).toBe(true);
-      expect(mockConfigService.getOrThrow).toHaveBeenCalledWith(
-        'DB_SYNCHRONIZE',
-      );
-    });
-
-    it('false 값을 반환해야 한다.', () => {
-      mockConfigService.getOrThrow.mockReturnValue(false);
-
-      const result = environmentService.getBoolean('DB_SYNCHRONIZE');
-
-      expect(result).toBe(false);
-    });
-  });
-
   describe('isLocal', () => {
     it('ENV가 local인 경우 true를 반환해야 한다.', () => {
       mockConfigService.getOrThrow.mockReturnValue(NODE_ENV.LOCAL);
@@ -117,9 +96,7 @@ describe('EnvironmentService', () => {
     });
 
     it('local 환경이 아닌 경우 환경변수에 명시된 PORT를 반환해야 한다.', () => {
-      mockConfigService.getOrThrow
-        .mockReturnValueOnce(NODE_ENV.PRODUCTION)
-        .mockReturnValueOnce('9091');
+      mockConfigService.getOrThrow.mockReturnValueOnce(NODE_ENV.PRODUCTION).mockReturnValueOnce('9091');
 
       expect(environmentService.getApplicationPort()).toBe(9091);
     });

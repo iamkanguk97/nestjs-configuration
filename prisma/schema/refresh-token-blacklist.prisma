@@ -1,0 +1,17 @@
+/// Refresh Token BlackList schema.
+///
+/// @namespace RefreshTokenBlackList
+/// @author Jason
+model RefreshTokenBlackList {
+    /// Primary Key (AUTO_INCREMENT)
+    id Int @id @default(autoincrement())
+
+    /// Refresh-Token that stored in blacklist schema.
+    refreshToken String @map("refresh_token")
+
+    /// Creation time.
+    createdAt DateTime @default(now()) @db.Timestamptz(6)
+
+    @@unique([refreshToken])
+    @@map("refresh_token_blacklist")
+}
