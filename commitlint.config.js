@@ -23,7 +23,7 @@ module.exports = {
     'subject-min-length': [2, 'always', 3], // 최소 3글자
     'subject-max-length': [2, 'always', 100], // 최대 100글자
     'subject-empty': [2, 'never'], // 커밋 제목은 필수
-    // 'subject-case': [2, 'never', ['upper-case']], // 전체 대문자만 금지, PascalCase는 허용
+    'subject-case': [0],
     'type-empty': [2, 'never'], // 커밋 타입도 필수
     'type-case': [2, 'always', 'lower-case'], // 커밋 타입은 소문자만 가능
   },
