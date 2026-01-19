@@ -13,7 +13,12 @@ export class SwaggerDocumentConfigHelper {
     return this;
   }
 
-  addBearerAuthTokens(tokens: Array<{ name: string; description: string }>): this {
+  addBearerAuthTokens(
+    tokens: Array<{
+      name: string;
+      description: string;
+    }>
+  ): this {
     tokens.forEach(({ name, description }) => {
       this.documentBuilder.addBearerAuth(
         {
@@ -30,10 +35,22 @@ export class SwaggerDocumentConfigHelper {
     return this;
   }
 
-  addTags(tags: Array<{ name: string; description: string }>): this {
+  addTags(
+    tags: Array<{
+      name: string;
+      description: string;
+    }>
+  ): this {
     tags.forEach(({ name, description }) => {
       this.documentBuilder.addTag(name, description);
     });
+
+    return this;
+  }
+
+  addServers(): this {
+    this.documentBuilder.addServer('http://localhost:9090', 'Local Environment');
+    this.documentBuilder.addServer('https://api-dev.shop', 'Development Environment');
 
     return this;
   }

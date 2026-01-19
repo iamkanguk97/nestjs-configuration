@@ -1,4 +1,5 @@
 import { SwaggerDocumentConfigHelper } from '@common/swagger/document-config.helper';
+import { EnvironmentService } from '@environment/environment.service';
 import type { INestApplication } from '@nestjs/common';
 import { Logger } from '@nestjs/common';
 import type { OpenAPIObject } from '@nestjs/swagger';
@@ -17,7 +18,12 @@ export class SwaggerBuilder {
    *
    * @author 이강욱
    */
-  private static readonly BEARER_TOKEN_CONFIG_LIST = [{ name: 'accessToken', description: 'API Access Token' }];
+  private static readonly BEARER_TOKEN_CONFIG_LIST = [
+    {
+      name: 'accessToken',
+      description: 'API Access Token',
+    },
+  ];
 
   /**
    * Tags Configuration List
@@ -25,11 +31,21 @@ export class SwaggerBuilder {
    *
    * @author 이강욱
    */
-  private static readonly TAG_LIST = [{ name: 'Health', description: 'Health Check API' }];
+  private static readonly TAG_LIST = [
+    {
+      name: 'Health',
+      description: 'Health Check API',
+    },
+  ];
 
   static setup(app: INestApplication): void {
     if (this.isSetupComplete) {
-      this.logger.warn('⚠️  Swagger has already been set up. Skipping...');
+      this.logger.warn('⚠️ Swagger has already been set up. Skipping...');
+      return;
+    }
+
+    if (app.get(EnvironmentService).isProduction()) {
+      this.logger.warn('⚠️ Swagger is disabled in production.');
       return;
     }
 
@@ -55,6 +71,7 @@ export class SwaggerBuilder {
       .setDefaultInfo()
       .addBearerAuthTokens(this.BEARER_TOKEN_CONFIG_LIST)
       .addTags(this.TAG_LIST)
+      .addServers()
       .build();
   }
 

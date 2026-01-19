@@ -32,7 +32,7 @@ module.exports = [
       'no-console': 'warn',
       'no-var': 'error',
       'prefer-const': 'error',
-      'comma-dangle': ['error', 'always-multiline'],
+      // 'comma-dangle': ['error', 'always-multiline'],
 
       eqeqeq: ['error', 'always'],
       curly: ['error', 'all'],

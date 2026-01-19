@@ -46,7 +46,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
       exception instanceof Error ? exception.stack : String(exception)
     );
 
-    const errorResponse: IErrorResponse = {
+    return {
       isSuccess: false,
       statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
       message: exception instanceof Error ? exception.message : 'Internal Server error',
@@ -58,8 +58,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
           stack: exception.stack,
         }),
     };
-
-    return errorResponse;
   }
 
   private isHttpExceptionResponse(response: string | object): response is IHttpExceptionResponse {

@@ -48,7 +48,13 @@ import { Level } from 'pino';
             };
           },
           formatters: {
-            level: (label: string, number: number): { level: number; severity: string } => ({
+            level: (
+              label: string,
+              number: number
+            ): {
+              level: number;
+              severity: string;
+            } => ({
               level: number,
               severity: label,
             }),
