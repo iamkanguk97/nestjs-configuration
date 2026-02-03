@@ -1,4 +1,4 @@
-const simpleImportSort = require('eslint-plugin-simple-import-sort');
+const importPlugin = require('eslint-plugin-import');
 const tsParser = require('@typescript-eslint/parser');
 const tsPlugin = require('@typescript-eslint/eslint-plugin');
 
@@ -26,7 +26,7 @@ module.exports = [
     },
     plugins: {
       '@typescript-eslint': tsPlugin,
-      'simple-import-sort': simpleImportSort,
+      import: importPlugin,
     },
     rules: {
       'no-console': 'warn',
@@ -39,8 +39,14 @@ module.exports = [
       semi: ['error', 'always'],
       quotes: ['error', 'single', { avoidEscape: true }],
 
-      'simple-import-sort/imports': 'warn',
-      'simple-import-sort/exports': 'warn',
+      'import/order': [
+        'warn',
+        {
+          groups: ['builtin', 'external', 'internal', ['parent', 'sibling'], 'type'],
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
+      ],
 
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-namespace': 'off',
