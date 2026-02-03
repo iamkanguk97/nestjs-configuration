@@ -2,6 +2,11 @@ import { DocumentBuilder } from '@nestjs/swagger';
 
 import type { OpenAPIObject } from '@nestjs/swagger';
 
+interface ISwaggerServerElements {
+  url: string;
+  description: string;
+}
+
 export class SwaggerDocumentConfigHelper {
   private readonly documentBuilder: DocumentBuilder = new DocumentBuilder();
 
@@ -50,8 +55,20 @@ export class SwaggerDocumentConfigHelper {
   }
 
   addServers(): this {
-    this.documentBuilder.addServer('http://localhost:9090', 'Local Environment');
-    this.documentBuilder.addServer('https://api-dev.shop', 'Development Environment');
+    const servers: ISwaggerServerElements[] = [
+      {
+        url: 'http://localhost:9090',
+        description: 'Local API Server',
+      },
+      {
+        url: 'https://api-dev.example.com',
+        description: 'Development API Server',
+      },
+    ];
+
+    servers.forEach((server: ISwaggerServerElements) => {
+      this.documentBuilder.addServer(server.url, server.description);
+    });
 
     return this;
   }

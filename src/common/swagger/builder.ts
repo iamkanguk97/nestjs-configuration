@@ -12,7 +12,7 @@ export class SwaggerBuilder {
   private static readonly logger = new Logger(SwaggerBuilder.name);
 
   private static isSetupComplete = false;
-  private static API_DOCS_PATH = '/api-docs';
+  private static readonly API_DOCS_PATH = '/api-docs';
 
   /**
    * Bearer Token Configuration List
