@@ -1,6 +1,7 @@
 import { Test } from '@nestjs/testing';
 
 import { PrismaService } from '@database/prisma/prisma.service';
+import { EnvironmentService } from '@environment/environment.service';
 
 import type { TestingModule } from '@nestjs/testing';
 
@@ -8,8 +9,19 @@ describe('PrismaService', () => {
   let prismaService: PrismaService;
 
   beforeEach(async () => {
+    const mockEnvironmentService = {
+      isLocal: jest.fn().mockReturnValue(false),
+      isDevelopment: jest.fn().mockReturnValue(false),
+    };
+
     const module: TestingModule = await Test.createTestingModule({
-      providers: [PrismaService],
+      providers: [
+        PrismaService,
+        {
+          provide: EnvironmentService,
+          useValue: mockEnvironmentService,
+        },
+      ],
     }).compile();
 
     prismaService = module.get<PrismaService>(PrismaService);
