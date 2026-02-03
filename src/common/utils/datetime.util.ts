@@ -1,8 +1,14 @@
 import dayjs from 'dayjs';
 
 export namespace DateTime {
-  export function now(): string {
-    return dayjs().toISOString();
+  export namespace Now {
+    export function iso(): string {
+      return dayjs().toISOString();
+    }
+
+    export function date(): Date {
+      return dayjs().toDate();
+    }
   }
 
   export function format(date: Date | string, format: string): string {
