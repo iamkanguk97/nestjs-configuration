@@ -1,8 +1,9 @@
+import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus, Logger } from '@nestjs/common';
+import { Request, Response } from 'express';
+
 import { IErrorResponse } from '@common/interfaces';
 import { DateTime } from '@common/utils/datetime.util';
 import { EnvironmentService } from '@environment/environment.service';
-import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus, Logger } from '@nestjs/common';
-import { Request, Response } from 'express';
 
 interface IHttpExceptionResponse {
   message: string;

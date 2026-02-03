@@ -1,10 +1,12 @@
-import { EnvironmentModule } from '@environment/environment.module';
-import { EnvironmentService } from '@environment/environment.service';
-import { Global, HttpStatus, Module } from '@nestjs/common';
 import { ServerResponse } from 'http';
 import { IncomingMessage } from 'http';
+
+import { Global, HttpStatus, Module } from '@nestjs/common';
 import { LoggerModule as PinoLoggerModule } from 'nestjs-pino';
 import { Level } from 'pino';
+
+import { EnvironmentModule } from '@environment/environment.module';
+import { EnvironmentService } from '@environment/environment.service';
 
 @Global()
 @Module({

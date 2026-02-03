@@ -1,6 +1,8 @@
-import { HealthController } from '@api/health/health.controller';
-import type { TestingModule } from '@nestjs/testing';
 import { Test } from '@nestjs/testing';
+
+import { HealthController } from '@api/health/health.controller';
+
+import type { TestingModule } from '@nestjs/testing';
 
 describe('HealthController', () => {
   let healthController: HealthController;

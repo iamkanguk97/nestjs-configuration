@@ -1,4 +1,5 @@
 import { SwaggerBuilder } from '@common/swagger/builder';
+
 import type { INestApplication } from '@nestjs/common';
 
 export namespace ApplicationSwaggerBootstrap {

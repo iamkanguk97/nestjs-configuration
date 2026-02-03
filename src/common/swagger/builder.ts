@@ -1,9 +1,11 @@
+import { Logger } from '@nestjs/common';
+import { SwaggerModule } from '@nestjs/swagger';
+
 import { SwaggerDocumentConfigHelper } from '@common/swagger/document-config.helper';
 import { EnvironmentService } from '@environment/environment.service';
+
 import type { INestApplication } from '@nestjs/common';
-import { Logger } from '@nestjs/common';
 import type { OpenAPIObject } from '@nestjs/swagger';
-import { SwaggerModule } from '@nestjs/swagger';
 import type { SwaggerUiOptions } from '@nestjs/swagger/dist/interfaces/swagger-ui-options.interface';
 
 export class SwaggerBuilder {

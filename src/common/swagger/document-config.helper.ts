@@ -1,5 +1,6 @@
-import type { OpenAPIObject } from '@nestjs/swagger';
 import { DocumentBuilder } from '@nestjs/swagger';
+
+import type { OpenAPIObject } from '@nestjs/swagger';
 
 export class SwaggerDocumentConfigHelper {
   private readonly documentBuilder: DocumentBuilder = new DocumentBuilder();

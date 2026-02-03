@@ -1,11 +1,13 @@
+import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+
 import { AppModule } from '@app.module';
 import { ApplicationLoggerBootstrap } from '@bootstrap/logger';
 import { ApplicationSwaggerBootstrap } from '@bootstrap/swagger';
 import { ResponseInterceptor } from '@common/interceptors/response.interceptor';
 import { EnvironmentService } from '@environment/environment.service';
+
 import type { INestApplication } from '@nestjs/common';
-import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
 import type { NestExpressApplication } from '@nestjs/platform-express';
 
 export namespace ApplicationBootstrap {

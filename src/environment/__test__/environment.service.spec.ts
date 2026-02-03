@@ -1,8 +1,10 @@
+import { ConfigService } from '@nestjs/config';
+import { Test } from '@nestjs/testing';
+
 import { NODE_ENV } from '@environment/environment.constant';
 import { EnvironmentService } from '@environment/environment.service';
-import { ConfigService } from '@nestjs/config';
+
 import type { TestingModule } from '@nestjs/testing';
-import { Test } from '@nestjs/testing';
 
 describe('EnvironmentService', () => {
   let environmentService: EnvironmentService;

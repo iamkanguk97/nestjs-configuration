@@ -1,4 +1,5 @@
 import { InternalServerErrorException } from '@nestjs/common';
+
 import { EnvironmentValidationSchemaFunc } from 'src/environment/environment.validation';
 
 describe('EnvironmentValidationSchemaFunc', () => {
