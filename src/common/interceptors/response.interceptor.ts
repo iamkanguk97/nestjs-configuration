@@ -14,7 +14,7 @@ export class ResponseInterceptor<T> implements NestInterceptor<T, IApiResponse<T
         return {
           isSuccess: true,
           data: isNil(data) ? null : data,
-          timestamp: DateTime.now(),
+          timestamp: DateTime.Now.iso(),
         };
       })
     );

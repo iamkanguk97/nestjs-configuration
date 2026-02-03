@@ -16,7 +16,7 @@ describe('DateTime Util', () => {
 
   describe('now', () => {
     it('현재 시간을 ISO 문자열로 반환해야 합니다.', () => {
-      const result = DateTime.now();
+      const result = DateTime.Now.iso();
       expect(result).toBe('2026-01-01T00:00:00.000Z');
     });
   });

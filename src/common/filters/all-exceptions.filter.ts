@@ -37,7 +37,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
       message: this.extractExceptionMessage(exception),
       error: exception.constructor.name,
       path: request.url,
-      timestamp: DateTime.now(),
+      timestamp: DateTime.Now.iso(),
     };
   }
 
@@ -53,7 +53,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
       message: exception instanceof Error ? exception.message : 'Internal Server error',
       error: 'InternalServerError',
       path: request.url,
-      timestamp: DateTime.now(),
+      timestamp: DateTime.Now.iso(),
       ...(!this.environmentService.isProduction() &&
         exception instanceof Error && {
           stack: exception.stack,
