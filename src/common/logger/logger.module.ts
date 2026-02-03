@@ -17,6 +17,7 @@ import { EnvironmentService } from '@environment/environment.service';
         // forRoutes: ['*'],
         exclude: ['/api-docs'],
         pinoHttp: {
+          level: environmentService.isProduction() ? 'info' : 'debug',
           autoLogging: true,
           customLogLevel: (_: IncomingMessage, res: ServerResponse, _error?: Error): Level => {
             if (res.statusCode >= HttpStatus.BAD_REQUEST && res.statusCode < HttpStatus.INTERNAL_SERVER_ERROR) {
@@ -50,13 +51,7 @@ import { EnvironmentService } from '@environment/environment.service';
             };
           },
           formatters: {
-            level: (
-              label: string,
-              number: number
-            ): {
-              level: number;
-              severity: string;
-            } => ({
+            level: (label: string, number: number): { level: number; severity: string } => ({
               level: number,
               severity: label,
             }),
@@ -92,7 +87,7 @@ import { EnvironmentService } from '@environment/environment.service';
                 errorProps: '*',
                 multiline: true,
                 singleLineError: false,
-                minimumLevel: 'info',
+                minimumLevel: 'debug',
                 sync: true,
                 colorize: true,
                 hideObject: false,
