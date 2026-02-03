@@ -1,18 +1,18 @@
-import { Controller, Get, HttpStatus } from '@nestjs/common';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Controller, Get, HttpCode, HttpStatus } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Health')
-@Controller('health')
+@Controller('/health')
 export class HealthController {
-  @ApiOperation({
-    summary: '서버 상태 체크',
-    description: '서버가 정상적으로 동작하는지 확인합니다.',
-  })
-  @ApiResponse({
-    status: HttpStatus.OK,
-    description: '서버가 정상적으로 동작 중입니다.',
-  })
+  /**
+   * 서버 상태 체크 API
+   *
+   * @remarks 서버가 정상적으로 동작하는지 확인합니다.
+   *
+   * @throws {500} 서버 오류
+   */
   @Get('/')
+  @HttpCode(HttpStatus.OK)
   healthCheck(): void {
     return;
   }
